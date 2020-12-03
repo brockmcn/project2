@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import {Notes} from './Notes';
+import {useSelector, useDispatch} from 'react-redux';
+import {loadNotes} from './action';
+
 
 function App() {
+
+  const notes = useSelector(state => state.memories);
+  const dispatch = useDispatch();
+
+  const onLoad = () => {
+    dispatch(loadNotes([
+      {number: 1, message: "random message"},
+     ]));
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+     <div className="App">
+      <header className="App-header">   
+        <h1>
+          Trip Planner
+        </h1>
       </header>
-    </div>
+      <h2>Destination</h2>
+      <h3>(google maps)</h3>
+      <h2>Dates</h2>
+      <h3>(calendar)</h3>
+        <div className="notes">
+          <h2>Notes</h2>
+            {/* <button onCLick={onLoad}>test button</button>
+            {notes.map(note => <Notes note={note} />)} */}
+        </div>
+      </div>
   );
 }
 
