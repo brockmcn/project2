@@ -22,7 +22,7 @@ function App() {
         </h1>
       </header>
       <h2>Destination</h2>
-      <h3>(google maps)</h3>
+      <h3>(google maps link)</h3>
       <h2>Dates</h2>
       <h3>(calendar)</h3>
         <div className="notes">
