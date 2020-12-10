@@ -41,10 +41,19 @@ h2, h3 {
   text-align: left;
 }
 
-.number {
-  margin-left: 2em;
-}
+ li {
+  list-style: none;
 
-.note {
   text-align: left;
+  background-color: #618ee2;
+
+  /*border: 3px solid #000;*/
+
+  background:#ffc;
+  height:10em;
+  width:10em;
+  padding:1em;
+
+  margin: 5px;
+
 }
