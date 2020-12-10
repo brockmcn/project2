@@ -1,18 +1,18 @@
 import { Action } from "./action";
 
 const initialState = {
-    isWating: false,
+    isWaiting: false,
     notes: [],
 };
 
 function reducer(state = initialState, action) {
-    switch (action.type) {
+     switch (action.type) {
         case Action.LoadNotes:
             return {
                 ...state,
                 notes: action.payload,
             }  
-       default:
+       default: 
         return state;
     }
 }

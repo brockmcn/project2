@@ -40,3 +40,11 @@
 h2, h3 {
   text-align: left;
 }
+
+.number {
+  margin-left: 2em;
+}
+
+.note {
+  text-align: left;
+}
