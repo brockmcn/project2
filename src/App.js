@@ -1,9 +1,14 @@
 import './App.css';
 import {Note} from './Note';
 import {useSelector, useDispatch} from 'react-redux';
-import {loadDay} from './action';
+import {loadNumber, startAddingNote} from './action';
 import React, {useEffect} from 'react';
 
+const date = new Date();
+const month = date.getMonth() + 1;
+const day = date.getDate();
+const year = date.getFullYear();
+const number = 0;
 
 function App() {
 
@@ -11,8 +16,12 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-  dispatch(loadDay(4, 7));
+  dispatch(loadNumber(number));
   }, [dispatch]);
+
+  const onAdd = () => {
+    dispatch(startAddingNote(number));
+  }
  
   return (
      <div className="App">
@@ -28,17 +37,9 @@ function App() {
         <div>
           <h2>Notes</h2>
           <div className="notes">
+          <button onClick={onAdd}>new note</button>
             <li>
-              1. sample note
-              {/* use this when backend stuff works {notes.map(note => <Note key={note.id} note={note}/>)} */}
-            </li>
-            <li>
-              2. sample note
-              {/* use this when backend stuff works {notes.map(note => <Note key={note.id} note={note}/>)} */}
-            </li>
-            <li>
-              3. sample note
-              {/* use this when backend stuff works {notes.map(note => <Note key={note.id} note={note}/>)} */}
+              {notes.map(note => <Note key={note.id} note={note}/>)}
             </li>
           </div>            
         </div>
