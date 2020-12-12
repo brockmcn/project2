@@ -41,11 +41,11 @@ function checkForErrors(response) {
 }
 
 //url for the web service
-const host='https://project2.brock347.me:3000';
+const host='https://project2.brock347.me:8442';
 
-export function loadNumber(number) {
+export function loadNumber() {
     return dispatch => {
-    fetch(`${host}/notes/${number}`)
+    fetch(`${host}/notes`)
         .then(checkForErrors)
         .then(response => response.json())
         .then(data => {
@@ -58,8 +58,8 @@ export function loadNumber(number) {
 }
 
 
-export function startAddingNote(number) {
-    const note = {number, message: ""};
+export function startAddingNote() {
+    const note = {message: ""};
     const options = {
         method: 'POST',
         headers: {
@@ -70,7 +70,7 @@ export function startAddingNote(number) {
 
 
     return dispatch => {
-    fetch(`${host}/notes/${number}`, options)
+    fetch(`${host}/notes`, options)
         .then(checkForErrors)
         .then(response => response.json())
         .then(data => {
