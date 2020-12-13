@@ -74,7 +74,7 @@ export function loadNumber(id) {
 }
 
 
-export function startAddingNote() {
+export function startAddingNote(id) {
     const note = {message: ""};
     const options = {
         method: 'POST',

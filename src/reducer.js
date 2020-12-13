@@ -34,7 +34,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 notes: state.notes.map(note => {
                     if (note.id === action.payload.id) {
-                          return {...note, isEditing: false};
+                          return {...note, isEditing: undefined};
                     } else {
                         return note;
                     }

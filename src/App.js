@@ -16,7 +16,7 @@ function App() {
   }, [dispatch]);
 
   const onAdd = () => {
-    dispatch(startAddingNote());
+    dispatch(startAddingNote(id));
   }
   
  
