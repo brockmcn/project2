@@ -4,11 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {loadNumber, startAddingNote} from './action';
 import React, {useEffect} from 'react';
 
-const date = new Date();
-const month = date.getMonth() + 1;
-const day = date.getDate();
-const year = date.getFullYear();
-const number = 0;
+const id = 0;
 
 function App() {
 
@@ -16,12 +12,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-  dispatch(loadNumber(number));
+  dispatch(loadNumber(id));
   }, [dispatch]);
 
   const onAdd = () => {
-    dispatch(startAddingNote(number));
+    dispatch(startAddingNote());
   }
+  
  
   return (
      <div className="App">
@@ -38,9 +35,9 @@ function App() {
           <h2>Notes</h2>
           <div className="notes">
           <button onClick={onAdd}>new note</button>
-            <li>
+            {/* <li> */}
               {notes.map(note => <Note key={note.id} note={note}/>)}
-            </li>
+            {/* </li> */}
           </div>            
         </div>
       </div>

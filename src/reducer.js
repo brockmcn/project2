@@ -12,10 +12,10 @@ function reducer(state = initialState, action) {
                 ...state,
                 notes: action.payload,
             };
-        case Action.finishAddingNote:
+        case Action.FinishAddingNote:
             return {
                 ...state,
-                notes: [action.payload, ...state.notes],
+                notes: [{...action.payload, isEditing: true}, ...state.notes],
             };    
         case Action.EnterEditMode:
             return {
@@ -34,12 +34,31 @@ function reducer(state = initialState, action) {
                 ...state,
                 notes: state.notes.map(note => {
                     if (note.id === action.payload.id) {
-                          return {...note, isEditing: undefined};
+                          return {...note, isEditing: false};
                     } else {
                         return note;
                     }
                 }),
             };
+
+        case Action.FinishSavingNote:
+        return {
+            ...state,
+            notes: state.notes.map(note => {
+                if (note.id === action.payload.id) {
+                      return action.payload;
+                } else {
+                    return note;
+                }
+            }),
+        };
+
+
+        case Action.FinishDeletingNote:
+        return {
+            ...state,
+            notes: state.notes.filter(note => note.id !== action.payload.id),
+        };
        default: 
         return state;
     }

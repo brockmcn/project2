@@ -41,7 +41,7 @@ h2, h3 {
   text-align: left;
 }
 
- li {
+ li, .note {
   list-style: none;
 
   text-align: left;

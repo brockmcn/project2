@@ -1,8 +1,10 @@
 export const Action = Object.freeze({
     LoadNotes: 'LoadNotes',
-    finishAddingNote: 'FinishAddingNote',
+    FinishAddingNote: 'FinishAddingNote',
     EnterEditMode: 'EnterEditMode',
     LeaveEditMode: 'LeaveEditMode',
+    FinishSavingNote: 'FinishSavingNote',
+    FinishDeletingNote: 'FinishDeletingNote',
 });
 
 export function loadNotes(notes) {
@@ -19,16 +21,30 @@ export function finishAddingNote(note) {
     };
 }
 
+export function finishSavingNote(note) {
+    return {
+        type: Action.FinishSavingNote,
+        payload: note,
+    };
+}
+
+export function finishDeletingNote(note) {
+    return {
+        type: Action.FinishDeletingNote,
+        payload: note,
+    };
+}
+
 export function enterEditMode(note) {
     return {
-        type: Action.enterEditMode,
+        type: Action.EnterEditMode,
         payload: note,
     };
 }
 
 export function leaveEditMode(note) {
     return {
-        type: Action.leaveEditMode,
+        type: Action.LeaveEditMode,
         payload: note,
     };
 }
@@ -41,16 +57,16 @@ function checkForErrors(response) {
 }
 
 //url for the web service
-const host='https://project2.brock347.me:3000';
+const host='https://project2.brock347.me:8442';
 
-export function loadNumber(number) {
+export function loadNumber(id) {
     return dispatch => {
-    fetch(`${host}/notes/${number}`)
+    fetch(`${host}/notes`)
         .then(checkForErrors)
         .then(response => response.json())
         .then(data => {
             if (data.ok) {
-                dispatch(loadNotes(data.notes));
+                dispatch(loadNotes(data.note));
             }
         })
         .catch(e => console.error(e));
@@ -58,8 +74,8 @@ export function loadNumber(number) {
 }
 
 
-export function startAddingNote(number) {
-    const note = {number, message: ""};
+export function startAddingNote() {
+    const note = {message: ""};
     const options = {
         method: 'POST',
         headers: {
@@ -68,15 +84,55 @@ export function startAddingNote(number) {
         body: JSON.stringify(note),
     }
 
-
     return dispatch => {
-    fetch(`${host}/notes/${number}`, options)
+    fetch(`${host}/notes`, options)
         .then(checkForErrors)
         .then(response => response.json())
         .then(data => {
             if (data.ok) {
                 note.id = data.id;
                 dispatch(finishAddingNote(note));
+            }
+        })
+        .catch(e => console.error(e));
+    }
+}
+
+
+export function startSavingNote(note) {
+    const options = {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(note),
+    }
+
+    return dispatch => {
+    fetch(`${host}/notes/${note.id}`, options)
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                dispatch(finishSavingNote(note));
+            }
+        })
+        .catch(e => console.error(e));
+    }
+}
+
+export function startDeletingNote(note) {
+    const options = {
+        method: 'DELETE',
+    };
+
+    return dispatch => {
+    fetch(`${host}/notes/${note.id}`, options)
+        .then(checkForErrors)
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                dispatch(finishDeletingNote(note));
             }
         })
         .catch(e => console.error(e));
