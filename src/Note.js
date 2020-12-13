@@ -20,7 +20,7 @@ export function Note(props) {
     const onSave = () => {
         dispatch(startSavingNote({
             id: note.id,
-            message:message,
+            message,
         }));
     }
 
