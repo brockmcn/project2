@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+Project 2 Report:
+1. You will create an app that has a coherent purpose and satisfies a personal creative itch.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Trip planner/scheduling app
 
-## Available Scripts
+2. You will not write a to-do list management app.
 
-In the project directory, you can run:
+It is a trip planinng app
 
-### `npm start`
+3. You may work with a partner or as an individual.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Collaborated with Rachel Stern
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4. The code must be written by you and your partner, and any assets must be made by you and your partner or conform to their license.
 
-### `npm test`
+All code was written and all assets conform to licenses.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. Your app will have both a back-end data store and web service and a front-end client.
 
-### `npm run build`
+project2-frontend and project2-backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+6. You will create a front-end client using React’s functional components and hooks. (Do not use classes for making components.)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Front-end clientmade with React's functional components and hooks.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. The content of your client must change dynamically as the user interacts with it. (Sites with only static content generally should not be written with React.)
 
-### `npm run eject`
+The notes change dynamically as the user interacts with it.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+8. You will manage state in your client using Redux.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+State management used in client using Redux.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+9. The user interface of your client should follow the aesthetic and usability principles described in project 1, including clean spacing, coherent alignment, sufficient contrast, harmonious colors, and responsive design.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The simple front end design has clean spacing and coherent alignment with a very readable interface.
 
-## Learn More
+10. You will access your web service from your client using your own calls to fetch and not through any helper library.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Fetches were used on host (backend url).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+11. You will indicate asynchronous activity to the user via the GUI. For example, while a fetch executes, you show a progress wheel.
 
-### Code Splitting
+Progress wheel implemented using React spinners (see App.js).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+12. Your client must be free from all warnings and errors.
 
-### Analyzing the Bundle Size
+No warnings or errors during compilation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+13. Your front-end client must be stored in a Git repository that you have shared with your instructor. On GitHub, GitLab, and Bitbucket, share with the user twodee.
 
-### Making a Progressive Web App
+project2-frontend in github
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+14. Your front-end client must be available through the URL https://project2.YOUR-DOMAIN-NAME. It must be served out via HTTPS over port 443. If visitors access your client through port 80, they must be redirected automatically to port 443. The configuration is very similar to that of project 1.
 
-### Advanced Configuration
+front-end client accessible through https://project2.brock347.me
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+15. Your app will store its data long-term in a relational database. There’s nothing wrong with NoSQL databases like MongoDB, but they are intentionally outlawed to align our focus and to give us more experience with relational databases. Your database need not have multiple tables.
 
-### Deployment
+Data is stored in the backend in a relational database.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+16. You will provide an Express-based web service for interacting with the database. The service must only be directly accessible from your droplet, and not from outside. Use ufw to block all ports but the ones you need for SSH and your allowed web servers.
 
-### `npm run build` fails to minify
+ran ufw deny on the localhost port
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+17. The web service must communicate send and receive complex data as JSON.
+
+Notes are sent from the database and are received from the database as complex JSON.
+
+18. The endpoints of the web service and any parameters should be appropriately named.
+
+Endpoints are appropriately named (GET, POST, PATCH, DELETE).
+
+19. The web service must support cross-origin resource sharing.
+
+The web service requires CORS
+
+20. Your web service must be started using a process manager like pm2 so that it stays running.
+
+Web service is implement using pm2 and is always running
+
+21. You will create an Nginx server that allows global, encrypted access to your web service.
+
+Nginx server was created and is in droplet under enabled-sites
+
+22. Your back-end must be stored in a separate Git repository that you have shared with your instructor. On GitHub, GitLab, and Bitbucket, share with the user twodee.
+
+Backend is stored in project2-backend github repository
