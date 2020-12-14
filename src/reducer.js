@@ -15,7 +15,7 @@ function reducer(state = initialState, action) {
         case Action.FinishAddingNote:
             return {
                 ...state,
-                notes: [{...action.payload, isEditing: true}, ...state.notes],
+                notes: [{...action.payload}, ...state.notes],
             };    
         case Action.EnterEditMode:
             return {
@@ -46,7 +46,7 @@ function reducer(state = initialState, action) {
             ...state,
             notes: state.notes.map(note => {
                 if (note.id === action.payload.id) {
-                      return action.payload;
+                    return action.payload;
                 } else {
                     return note;
                 }

@@ -59,7 +59,7 @@ function checkForErrors(response) {
 //url for the web service
 const host='https://project2.brock347.me:8442';
 
-export function loadNumber(id) {
+export function loadNumber() {
     return dispatch => {
     fetch(`${host}/notes`)
         .then(checkForErrors)
@@ -74,8 +74,8 @@ export function loadNumber(id) {
 }
 
 
-export function startAddingNote(id) {
-    const note = {id, message: ''};
+export function startAddingNote() {
+    const note = {message: ''};
     const options = {
         method: 'POST',
         headers: {

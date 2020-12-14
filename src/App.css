@@ -62,11 +62,8 @@ h2, h3 {
   text-align: right;
 }
 
-#dest, #d, #departure, #arrival, label, #new {
+#dest, #d, #departure, #arrival, label, #new, form {
   display: flex;
   margin: 5px;
   justify-content: left;
 }
-
-
-

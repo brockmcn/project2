@@ -3,8 +3,7 @@ import {Note} from './Note';
 import {useSelector, useDispatch} from 'react-redux';
 import {loadNumber, startAddingNote} from './action';
 import React, {useEffect} from 'react';
-
-const id = 0;
+import ClipLoader from "react-spinners/ClipLoader";
 
 /* function destFunction() {
   var d = document.getElementById("dest").value;
@@ -16,13 +15,14 @@ function App() {
 
   const notes = useSelector(state => state.notes);
   const dispatch = useDispatch();
+  const isWaiting = useSelector(state => state.isWaiting);
 
   useEffect(() => {
-  dispatch(loadNumber(id));
+  dispatch(loadNumber());
   }, [dispatch]);
 
   const onAdd = () => {
-    dispatch(startAddingNote(id));
+    dispatch(startAddingNote());
   }
    
   return (
@@ -35,7 +35,9 @@ function App() {
       <h2>Destination</h2>
       <input id="dest"></input>
       {/* <button onClick={destFunction()} id="d">go!</button>  */}
-      <button id="d">go!</button> 
+      <form action="https://googlemaps.com" target="_blank">
+        <input type="submit" value="Map"/>
+      </form>
 
       <p id="loc"></p>
 
@@ -48,8 +50,9 @@ function App() {
         <div>
           <h2>Notes</h2>
           <div className="notes">
-          <button id="new" onClick={onAdd}>new note</button>
+              <button id="new" onClick={onAdd}>new note</button>
               {notes.map(note => <Note key={note.id} note={note}/>)}
+              {isWaiting && <ClipLoader color={"#682bft"}/>}
           </div>            
         </div>
       </div>
